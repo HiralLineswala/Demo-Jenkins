@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    environment {
+        pomfile = "C:/ProgramData/Jenkins/.jenkins/workspace/demopipeline/my-app/"
+    }
 
     tools {
         maven "MAVEN"
@@ -15,7 +19,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/New_demo/my-app/") {
+                dir(pomfile) {
                 sh 'mvn -B -DskipTests clean package'
                 }
             
